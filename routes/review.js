@@ -30,5 +30,15 @@ router.post('/send-review', async (req, res) => {
     res.status(500).json({ message: 'Error submitting review', error });
   }
 });
-
+router.get('/:reviewCode', async (req, res) => {
+  const { reviewCode } = req.params;
+  
+  try {
+    const reviews = await Review.find({ reviewCode });
+    res.status(200).json(reviews);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 module.exports = router;
