@@ -6,10 +6,7 @@ const cors = require('cors');
 const app = express();
 
 // Enable CORS for all origins
-app.use(cors({
-    origin: 'https://latentreviews.vercel.app',
-    credentials: true
-  }));
+app.use(cors());
 
 // Middleware
 app.use(express.json());
